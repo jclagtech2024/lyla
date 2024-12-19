@@ -1,0 +1,106 @@
+@use "sass:string";
+
+$breakpoints: (
+  // All Mobile Media Query
+  'phone320': (max-width: 320px),
+  'phone360': (max-width: 360px),
+  'phone374': (max-width: 374px),
+  'phone375': (max-width: 375px),
+  'phone414': (max-width: 414px),
+  'phone480': (max-width: 480px),
+  'phone545': (max-width: 545px),
+  'phone600': (max-width: 600px),
+  'phone640': (max-width: 640px),
+  'phone': (max-width: 767px),
+  'phone480-767': (string.unquote("(min-width: 480px) and (max-width: 767px)")),
+  'phone400-574': (string.unquote("(min-width: 400px) and (max-width: 574px)")),
+  'phoneLandscape': (string.unquote("(max-width: 1199px) and (orientation: landscape)")),
+
+  // All Tabs Media Query
+  'scr768-990': (string.unquote("(min-width: 768px) and (max-width: 990px)")),
+  'scr768-991': (string.unquote("(min-width: 768px) and (max-width: 991px)")),
+  'scr992-1199': (string.unquote("(min-width: 992px) and (max-width: 1199px)")),
+  'scr992-1200': (string.unquote("(min-width: 992px) and (max-width: 1200px)")),
+  'scr992-1279': (string.unquote("(min-width: 992px) and (max-width: 1279px)")),
+  'scr1281-1365': (string.unquote("(min-width: 1281px) and (max-width: 1365px)")),
+  'scr1367-1439': (string.unquote("(min-width: 1367px) and (max-width: 1439px)")),
+  'scr1441-1679': (string.unquote("(min-width: 1441px) and (max-width: 1679px)")),
+  'scr1681-1919': (string.unquote("(min-width: 1681px) and (max-width: 1919px)")),
+  'scr1024': (max-width: 1024px),
+  'scr991': (max-width: 991px),
+  'scr819': (max-width: 819px),
+  'scr820': (max-width: 820px),
+  'tab': (max-width: 768px),
+  
+  // All Desktop Media Query
+  'scr414': (max-width: 414px),
+  'scr545': (max-width: 545px),
+  'scr1040': (max-width: 1040px),
+  'scr1199': (max-width: 1199px),
+  'scr1200': (max-width: 1200px),
+  'scr1280': (max-width: 1280px),
+  'scr1366': (max-width: 1366px),
+  'scr1440': (max-width: 1440px),
+  'scr1500': (max-width: 1500px),
+  'scr1660': (max-width: 1660px),
+  'scr1680': (max-width: 1680px),
+  'scr1800': (max-width: 1800px),
+  'scr1920': (max-width: 1920px),
+  'scrmin367': (min-width: 367px),
+  'scrmin376': (min-width: 376px),
+  'scrmin415': (min-width: 415px),
+  'scrmin481': (min-width: 481px),
+  'scrmin546': (min-width: 546px),
+  'scrmin768': (min-width: 768px),
+  'scrmin767': (min-width: 767px),
+  'scrmin992': (min-width: 992px),
+  'scrmin1199': (min-width: 1199px),
+  'scrmin1200': (min-width: 1200px),
+  'scrmin1281': (min-width: 1281px),
+  'scrmin1700': (min-width: 1700px),
+  'scrmin1921': (min-width: 1921px),
+  'scrmin2300': (min-width: 2300px),
+  'scrmin2800': (min-width: 2800px),
+) !default;
+
+$default-color-black: #000000;
+$default-color-yeldark: #F89E1B;
+$default-color-yellight: #F8C550;
+$default-color-red: #E02242;
+$default-color-redDark: #a73219;
+$default-color-orange: #FF4401;
+$default-color-orangeNew: #cc3400;
+$default-color-orangeDark: #d1481a;
+$default-color-orangeLonghorn: #BF5700;
+$default-color-dark: #41424B;
+$default-color-darklight: #4f4f4f;
+$default-color-darklight2:#65626A;
+$default-color-darklight3:#55555d;
+$default-color-darklight4:#2a2b35;
+$default-color-white: #FFFFFF;
+$default-color-whitelight: #fcfcfc;
+$default-color-whitelight2:#F6F6F6;
+$default-color-whitelight3:#F7F7F7;
+$default-color-whitelight4:#CFD2D3;
+$default-color-whitelight5:#ebebeb;
+$default-color-whitelight6:#f8f8f8;
+$default-color-whitelight7:#f2f2f2;
+$default-color-whitelight8:#f7f7f6;
+$default-color-gray:#7c7c7c;
+$default-color-grayLight:#949594;
+$default-color-blue:#4A4AF4;
+$default-color-lightblue: #A2C3C8;
+
+// new Colors
+$default-color-laylaBrand: #bf5700;
+$default-color-laylaBrandDark: #a73219;
+$default-color-darklightNew: #4d4d4d;
+$default-color-darklightNew2: #736357;
+$default-color-darklightNew3: #808080;
+$default-color-darklightNew4: #56504c;
+$default-color-darklightNew5: #847b6d;
+$default-color-icon: #e5bf73;
+$default-color-grayLightNew:#f9f6f4;
+$default-color-grayLightNew2:#efecea;
+
+$default-font: "Poppins";

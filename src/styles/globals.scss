@@ -1,0 +1,2473 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "theme-scss/base";
+// @import "swiper/css/";
+// @import 'swiper/scss';
+// @import 'swiper/scss/navigation';
+// @import 'swiper/scss/pagination';
+// @import 'swiper/scss/thumbs';
+
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@include font-face(Poppins, poppins/poppins100, 100, normal, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppins100italic, 100, italic, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppins200, 200, normal, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppins200italic, 200, italic, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppins300, 300, normal, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppins300italic, 300, italic, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppinsregular, 400, normal, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppinsitalic, 400, italic, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppins500, 500, normal, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppins500italic, 500, italic, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppins600, 600, normal, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppins600italic, 600, italic, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppins700, 700, normal, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppins700italic, 700, italic, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppins800, 800, normal, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppins800italic, 800, italic, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppins900, 900, normal, eot woff2 woff ttf svg);
+@include font-face(Poppins, poppins/poppins900italic, 900, italic, eot woff2 woff ttf svg);
+
+@font-face {
+  font-family: "Poppins-fallback";
+  size-adjust: 112.50%;
+  ascent-override: 109%;
+  src: local("Arial");
+}
+
+:root {
+  --containerWidth: 1220px;
+  --containerWidth2: 1320px;
+  --containerWidth3: 1470px;
+  --site-width: calc(100vw - 17px);
+  --gutterSize: 15px;
+  --globalRadius: 6px;
+  --easeoutcubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --easeoutexpo: cubic-bezier(0.19, 1, 0.22, 1);
+  --b-shadow-1: 0 5px 80px rgba(0, 0, 0, 0.07);
+  --b-shadow-2: 0 0.9px 2.7px -20px rgba(0, 0, 0, 0.162),
+    0 3.1px 8.9px -20px rgba(0, 0, 0, 0.238),
+    0 14px 40px -20px rgba(0, 0, 0, 0.4);
+  --b-shadow-3: 0 3.9px 5.3px rgba(0, 0, 0, 0.044),
+    0 13px 17.9px rgba(0, 0, 0, 0.066), 0 58px 80px rgba(0, 0, 0, 0.11);
+  --b-shadow-4: 0 1.9px 2.5px rgba(0, 0, 0, 0.02),
+    0 4.5px 6.1px rgba(0, 0, 0, 0.028), 0 8.5px 11.5px rgba(0, 0, 0, 0.035),
+    0 15.2px 20.5px rgba(0, 0, 0, 0.042),
+    0 28.4px 38.4px rgba(0, 0, 0, 0.05), 0 68px 92px rgba(0, 0, 0, 0.07);
+  --b-shadow-5: 0 2.6px 3.6px rgba(0, 0, 0, 0.052),
+    0 7.3px 10px rgba(0, 0, 0, 0.075), 0 17.5px 24.1px rgba(0, 0, 0, 0.098),
+    0 58px 80px rgba(0, 0, 0, 0.15);
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: $default-font, "Poppins-fallback";
+  font-weight: normal;
+  line-height: normal;
+  font-size: 14px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  // background-color: $default-color-whitelight;
+  color: $default-color-dark;
+
+  &.hidden-overflow {
+    overflow: hidden;
+
+    // position: relative;
+    &.overflowSubmenuMob {
+      @include maxRespond(991) {
+        &::before {
+          content: "";
+          width: 100%;
+          height: 100%;
+          background-color: $default-color-whitelight;
+          z-index: 1;
+          position: fixed;
+          left: 0;
+          top: 0;
+        }
+
+        & .owl-carousel {
+          z-index: 0;
+        }
+
+        & .header {
+          z-index: 9999;
+          position: relative;
+        }
+      }
+    }
+  }
+
+  &.sticky-buy iframe#launcher {
+    @include maxRespond(767) {
+      bottom: 130px !important;
+    }
+  }
+
+  & .modalHead {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(space-between);
+    background-color: $default-color-grayLightNew;
+    padding: 25px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    @include maxRespond(767) {
+      padding: 20px 15px;
+    }
+
+    & .back {
+      display: inline-block;
+      cursor: pointer;
+      font-size: 22px;
+      font-weight: 300;
+
+      @include maxRespond(767) {
+        font-size: 18px;
+      }
+
+      &:hover {
+        color: $default-color-laylaBrand;
+
+        & svg {
+          fill: $default-color-laylaBrand;
+        }
+      }
+
+      & svg {
+        width: 30px;
+        height: 15px;
+        margin-right: 8px;
+
+        @include maxRespond(767) {
+          width: 25px;
+          height: 10px;
+        }
+      }
+    }
+
+    & .close {
+      display: inline-block;
+      cursor: pointer;
+
+      & svg {
+        width: 25px;
+        height: 25px;
+
+        @include maxRespond(767) {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+
+  &:focus-visible {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 0px,
+      rgb(51, 51, 51) 0px 0px 0px 1px;
+  }
+
+  &:focus {
+    @include maxRespond(991) {
+      outline: none;
+      box-shadow: none;
+      border: none;
+    }
+  }
+}
+
+// video[poster] {
+//     object-fit: cover;
+// }
+app-picture-tag:not(.pdpv2) {
+  & picture {
+    & img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+img,
+svg {
+  vertical-align: middle;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  color: inherit;
+  border: none;
+  background-color: transparent;
+}
+
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled),
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+[type="button"],
+[type="reset"],
+[type="submit"],
+button {
+  -webkit-appearance: button;
+  appearance: button;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: inline-block;
+}
+
+.globalContainer {
+  max-width: var(--containerWidth);
+  margin: auto;
+  padding: 0 15px;
+  width: 100%;
+
+  @include maxRespond(1440) {
+    max-width: 1200px;
+  }
+
+  @include maxRespond(1280) {
+    max-width: 1140px;
+  }
+}
+
+.globalContainer2 {
+  max-width: var(--containerWidth2);
+  margin: auto;
+  padding: 0 15px;
+  width: 100%;
+
+  @include maxRespond(1440) {
+    max-width: 1280px;
+  }
+
+  @include maxRespond(1280) {
+    max-width: 1220px;
+  }
+}
+
+.globalContainer3 {
+  max-width: var(--containerWidth3);
+  margin: auto;
+  padding: 0 15px;
+  width: 100%;
+
+  @include maxRespond(1440) {
+    max-width: 1280px;
+  }
+
+  @include maxRespond(1280) {
+    max-width: 1220px;
+  }
+}
+
+.laylaButtonLink {
+  position: relative;
+  @include inline-flex;
+  @include align-items(center);
+  color: var(--btnLinkColor, $default-color-dark);
+  --easeoutcubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  &:hover {
+    --btn-dash-t: scaleX(0.7);
+  }
+
+  &::after {
+    content: "";
+    width: var(--btnDashW, 16px);
+    height: 1px;
+    background-color: var(--btnLinkColor, $default-color-dark);
+    transition: transform 0.25s var(--easeoutcubic, ease-out);
+    transform: var(--btn-dash-t, scaleX(1));
+    margin-inline-start: calc(var(--btnDashW, 30px) / 3);
+  }
+}
+
+.laylaButtonLink2 {
+  @include inline-flex;
+  @include align-items(center);
+  position: relative;
+  padding: 0 0 5px;
+  background: transparent;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--laylaButtonLink2Color, $default-color-dark);
+
+  &:hover {
+    --btn-line-tr: scaleX(1);
+    --btn-line-to-x: left;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    opacity: var(--btn-line-o, 1);
+    width: var(--btn-line-w, 100%);
+    height: var(--btn-line-size, 2px);
+    bottom: var(--btn-line-b, 0);
+    top: var(--btn-line-t, initial);
+    background-color: var(--laylaButtonLink2Color, currentColor);
+    transition: 0.4s var(--easeoutcubic, ease-out);
+    transition-property: transform, opacity;
+    transform: var(--btn-line-tr, scaleX(0));
+    transform-origin: center var(--btn-line-to-x, right);
+    right: var(--btn-line-r, initial);
+    inset-inline-start: var(--btn-line-l, initial);
+  }
+}
+
+.bgOverlay {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: rgb(209 72 26 / 40%);
+  z-index: 9;
+}
+
+.mt100 {
+  display: block;
+  margin-top: 100px;
+
+  @include maxRespond(1440) {
+    margin-top: 80px;
+  }
+
+  @include maxRespond(1366) {
+    margin-top: 70px;
+  }
+
+  @include maxRespond(1280) {
+    margin-top: 60px;
+  }
+
+  @include maxRespond(991) {
+    margin-top: 50px;
+  }
+
+  @include maxRespond(767) {
+    margin-top: 40px;
+  }
+}
+
+.mb100 {
+  display: block;
+  margin-bottom: 100px;
+
+  @include maxRespond(1440) {
+    margin-bottom: 80px;
+  }
+
+  @include maxRespond(1366) {
+    margin-bottom: 70px;
+  }
+
+  @include maxRespond(1280) {
+    margin-bottom: 60px;
+  }
+
+  @include maxRespond(991) {
+    margin-bottom: 50px;
+  }
+
+  @include maxRespond(767) {
+    margin-bottom: 40px;
+  }
+}
+
+.mb70 {
+  display: block;
+  margin-bottom: 70px;
+}
+
+.paddTB {
+  padding: 100px 0;
+
+  @include maxRespond(1660) {
+    padding: 90px 0;
+  }
+
+  @include maxRespond(1440) {
+    padding: 70px 0;
+  }
+
+  @include maxRespond(1366) {
+    padding: 50px 0;
+  }
+
+  @include maxRespond(991) {
+    padding: 40px 0;
+  }
+
+  @include maxRespond(767) {
+    padding: 30px 0;
+  }
+}
+
+.paddTop {
+  padding-top: 100px;
+
+  @include maxRespond(1660) {
+    padding-top: 90px;
+  }
+
+  @include maxRespond(1440) {
+    padding-top: 70px;
+  }
+
+  @include maxRespond(1366) {
+    padding-top: 50px;
+  }
+
+  @include maxRespond(991) {
+    padding-top: 40px;
+  }
+
+  @include maxRespond(767) {
+    padding-top: 30px;
+  }
+}
+
+.paddBottom {
+  padding-bottom: 100px;
+
+  @include maxRespond(1660) {
+    padding-bottom: 90px;
+  }
+
+  @include maxRespond(1440) {
+    padding-bottom: 70px;
+  }
+
+  @include maxRespond(1366) {
+    padding-bottom: 50px;
+  }
+
+  @include maxRespond(991) {
+    padding-bottom: 40px;
+  }
+
+  @include maxRespond(767) {
+    padding-bottom: 30px;
+  }
+}
+
+.popupCont {
+  @include flexbox;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: auto;
+  padding: 30px 0;
+  z-index: 999;
+  max-width: 120rem;
+  min-width: 120rem;
+  transform: translate(-50%, -50%);
+
+  @include minRespond(1921) {
+    max-width: 1200px;
+    min-width: 1200px;
+  }
+
+  @include maxRespond(1199) {
+    max-width: 80%;
+    min-width: 80%;
+  }
+
+  @include maxRespond(767) {
+    max-width: 94%;
+  }
+
+  &__inner {
+    position: relative;
+    width: 100%;
+
+    & .close-popup {
+      background-color: $default-color-white;
+      position: absolute;
+      box-shadow: $default-color-white 0 0 0 1px;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      font-size: 14px;
+      top: 10px;
+      right: 10px;
+      z-index: 9;
+      @include border-radius(50%);
+
+      @include maxRespond(1680) {
+        top: -2px;
+        right: -2px;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: rgb(0 0 0 / 80%);
+}
+
+.loaderWrap {
+  @include flexbox;
+  @include justify-content(center);
+  @include align-items(center);
+  height: 100%;
+
+  & .loader {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    color: inherit;
+    vertical-align: middle;
+    pointer-events: none;
+    border: 0.2em solid transparent;
+    border-top-color: $default-color-orangeLonghorn;
+    border-radius: 50%;
+    animation: 1s loader-05 linear infinite;
+    position: relative;
+
+    &:before {
+      content: "";
+      display: block;
+      width: inherit;
+      height: inherit;
+      position: absolute;
+      top: -0.2em;
+      left: -0.2em;
+      border: 0.2em solid $default-color-orangeLonghorn;
+      border-radius: 50%;
+      opacity: 0.2;
+    }
+  }
+}
+
+@keyframes loader-05 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Banner Section Start
+
+.bannerMain {
+  & .bannerMainInner {
+    background-color: $default-color-whitelight8;
+    --stretch: calc(((var(--site-width) - var(--containerWidth3)) / 2));
+    // --offset-m-right: calc(-1 * var(--stretch, 0px));
+    // max-width: calc(var(--containerWidth) + var(--stretch, 0px) - 0);
+    // margin-right: var(--offset-m-right, 0px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+
+    @include maxRespond(1280) {
+      gap: 20px;
+    }
+
+    @include maxRespond(767) {
+      grid-template-columns: 100%;
+      gap: 0;
+    }
+
+    & .left {
+      @include flexbox;
+      @include flex-direction(column);
+      margin-left: var(--stretch, 0px);
+      padding: 15px 0;
+      padding-right: 50px;
+
+      @include maxRespond(1500) {
+        margin-left: 0px;
+        padding-left: 15px;
+      }
+
+      @include maxRespond(1366) {
+        padding-right: 0;
+      }
+
+      @include maxRespond(767) {
+        padding: 30px 15px;
+      }
+
+      @include maxRespond(545) {
+        padding: 20px 15px;
+      }
+
+      & app-breadcrumbs {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      & .leftCont {
+        @include flexbox;
+        @include flex-direction(column);
+        @include justify-content(center);
+        @include flex(1);
+
+        & h1 {
+          margin: 0;
+        }
+
+        & .orange {
+          color: $default-color-orangeLonghorn;
+        }
+
+        & .title {
+          font-size: 48px;
+          font-weight: 700;
+          line-height: 1.2;
+          margin: 0;
+
+          @include maxRespond(1440) {
+            font-size: 42px;
+          }
+
+          @include maxRespond(1366) {
+            font-size: 36px;
+          }
+
+          @include maxRespond(1280) {
+            font-size: 32px;
+          }
+
+          @include maxRespond(1199) {
+            font-size: 28px;
+          }
+
+          @include maxRespond(991) {
+            font-size: 24px;
+          }
+
+          @include maxRespond(374) {
+            font-size: 20px;
+          }
+        }
+
+        & .subTitle {
+          font-size: 48px;
+          font-weight: 700;
+          line-height: 1.2;
+
+          @include maxRespond(1440) {
+            font-size: 42px;
+          }
+
+          @include maxRespond(1366) {
+            font-size: 36px;
+          }
+
+          @include maxRespond(1280) {
+            font-size: 32px;
+          }
+
+          @include maxRespond(1199) {
+            font-size: 28px;
+          }
+
+          @include maxRespond(991) {
+            font-size: 24px;
+          }
+
+          @include maxRespond(374) {
+            font-size: 20px;
+          }
+        }
+
+        & .des {
+          margin-top: 20px;
+          font-size: 16px;
+          line-height: 1.3;
+          max-width: 600px;
+
+          @include maxRespond(1366) {
+            margin-top: 15px;
+            font-size: 14px;
+          }
+
+          @include maxRespond(1280) {
+            margin-top: 10px;
+          }
+
+          @include maxRespond(991) {
+            font-size: 12px;
+          }
+        }
+
+        & .quote {
+          font-size: 17px;
+          line-height: 1.3;
+          max-width: 500px;
+          font-weight: 500;
+          margin-top: 20px;
+
+          @include maxRespond(1366) {
+            margin-top: 15px;
+            font-size: 16px;
+          }
+
+          @include maxRespond(1280) {
+            margin-top: 10px;
+          }
+
+          @include maxRespond(991) {
+            font-size: 14px;
+          }
+
+          & strong {
+            font-weight: 600;
+          }
+        }
+
+        & .specialRev {
+          margin-top: 30px;
+
+          @include maxRespond(1280) {
+            margin-top: 20px;
+          }
+
+          @include maxRespond(767) {
+            margin-top: 15px;
+          }
+
+          & .spRevInner {
+            @include flexbox;
+            @include align-items(center);
+            font-size: 16px;
+            font-weight: 500;
+
+            @include maxRespond(1280) {
+              font-size: 14px;
+            }
+
+            @include maxRespond(767) {
+              font-size: 12px;
+            }
+
+            &:not(:last-of-type) {
+              margin-bottom: 15px;
+
+              @include maxRespond(767) {
+                margin-bottom: 10px;
+              }
+            }
+
+            & app-picture-tag {
+              max-width: 125px;
+              min-width: 125px;
+              margin-right: 15px;
+
+              @include maxRespond(767) {
+                max-width: 95px;
+                min-width: 95px;
+                margin-right: 10px;
+              }
+
+              & picture {
+                & img {
+                  max-width: 100%;
+                  max-height: 28px;
+
+                  @include maxRespond(767) {
+                    max-height: 18px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    & .right {
+      & app-picture-tag {
+        height: 100%;
+
+        & picture {
+          height: 100%;
+          text-align: center;
+
+          & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+}
+
+.bannerMain2 {
+  & .bannerMain2Inner {
+    background-color: $default-color-darklightNew;
+    color: $default-color-white;
+    --stretch: calc(((var(--site-width) - var(--containerWidth3)) / 2));
+    // --offset-m-right: calc(-1 * var(--stretch, 0px));
+    // max-width: calc(var(--containerWidth) + var(--stretch, 0px) - 0);
+    // margin-right: var(--offset-m-right, 0px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+
+    &.lightBg {
+      background-color: $default-color-grayLightNew;
+      color: $default-color-dark;
+    }
+
+    @include maxRespond(1280) {
+      gap: 20px;
+    }
+
+    @include maxRespond(767) {
+      grid-template-columns: 100%;
+      gap: 0;
+    }
+
+    & .left {
+      @include flexbox;
+      @include flex-direction(column);
+      margin-left: var(--stretch, 0px);
+      padding: 15px 0;
+      padding-right: 50px;
+
+      @include maxRespond(1500) {
+        margin-left: 0px;
+        padding-left: 15px;
+      }
+
+      @include maxRespond(1366) {
+        padding-right: 0;
+      }
+
+      @include maxRespond(767) {
+        padding: 30px 15px;
+      }
+
+      @include maxRespond(545) {
+        padding: 20px 15px;
+      }
+
+      & app-breadcrumbs {
+        display: block;
+        // margin-bottom: 10px;
+      }
+
+      & .leftCont {
+        @include flexbox;
+        @include flex-direction(column);
+        @include justify-content(center);
+        @include flex(1);
+
+        &.saleCont {
+          & .preTitle {
+            font-size: 18px;
+            margin-bottom: 35px;
+            font-weight: 600;
+
+            @include maxRespond(1440) {
+              margin-bottom: 30px;
+            }
+
+            @include maxRespond(1280) {
+              font-size: 16px;
+              margin-bottom: 25px;
+            }
+
+            @include maxRespond(991) {
+              font-size: 14px;
+              margin-bottom: 20px;
+            }
+
+            @include maxRespond(767) {
+              margin-bottom: 15px;
+            }
+
+            & .orange {
+              color: $default-color-laylaBrandDark;
+            }
+          }
+
+          & .title {
+            font-size: 28px;
+            font-weight: normal;
+
+            @include maxRespond(1440) {
+              font-size: 26px;
+            }
+
+            @include maxRespond(1280) {
+              font-size: 24px;
+            }
+
+            @include maxRespond(991) {
+              font-size: 22px;
+            }
+
+            @include maxRespond(767) {
+              font-size: 20px;
+            }
+          }
+
+          & .subTitle {
+            font-size: 20px;
+            margin-top: 35px;
+
+            @include maxRespond(1440) {
+              margin-top: 30px;
+            }
+
+            @include maxRespond(1280) {
+              font-size: 18px;
+              margin-top: 25px;
+            }
+
+            @include maxRespond(991) {
+              font-size: 16px;
+              margin-top: 20px;
+            }
+
+            @include maxRespond(767) {
+              font-size: 14px;
+              margin-top: 15px;
+            }
+
+            & strong {
+              font-weight: 600;
+            }
+          }
+
+          & .links {
+            margin-top: 50px;
+
+            @include maxRespond(1440) {
+              margin-top: 40px;
+            }
+
+            @include maxRespond(1280) {
+              margin-top: 30px;
+            }
+
+            @include maxRespond(991) {
+              margin-top: 20px;
+            }
+
+            @include maxRespond(767) {
+              margin-top: 15px;
+            }
+
+            @include maxRespond(545) {
+              margin-top: 10px;
+            }
+
+            & a {
+              display: inline-block;
+              padding: 15px;
+              max-width: 250px;
+              width: 100%;
+              text-align: center;
+              background-color: $default-color-dark;
+              color: $default-color-white;
+              font-size: 10px;
+              font-weight: 500;
+              margin-bottom: 5px;
+
+              @include maxRespond(545) {
+                margin-top: 10px;
+              }
+
+              @include maxRespond(375) {
+                max-width: 100%;
+              }
+
+              &:not(:last-of-type) {
+                margin-right: 20px;
+
+                @include maxRespond(767) {
+                  margin-right: 15px;
+                }
+
+                @include maxRespond(375) {
+                  margin-right: 0;
+                }
+              }
+            }
+          }
+        }
+
+        & h1 {
+          margin: 0;
+        }
+
+        // & .orange {
+        //     color: $default-color-orangeLonghorn;
+        // }
+        & .preTitle2 {
+          font-size: 19px;
+          font-weight: 500;
+          margin-bottom: 20px;
+
+          @include maxRespond(1366) {
+            font-size: 18px;
+          }
+
+          @include maxRespond(991) {
+            font-size: 16px;
+            margin-bottom: 15px;
+          }
+
+          @include maxRespond(767) {
+            font-size: 14px;
+            margin-bottom: 10px;
+          }
+
+          @include maxRespond(545) {
+            font-size: 12px;
+          }
+        }
+
+        & .preTitle {
+          font-size: 32px;
+          font-weight: 500;
+
+          @include maxRespond(1366) {
+            font-size: 30px;
+          }
+
+          @include maxRespond(1280) {
+            font-size: 28px;
+          }
+
+          @include maxRespond(991) {
+            font-size: 26px;
+          }
+
+          @include maxRespond(767) {
+            font-size: 22px;
+          }
+
+          @include maxRespond(545) {
+            font-size: 20px;
+          }
+
+          @include maxRespond(414) {
+            font-size: 18px;
+          }
+        }
+
+        & .title {
+          font-size: 46px;
+          font-weight: 500;
+          line-height: 1.2;
+
+          @include maxRespond(1440) {
+            font-size: 42px;
+          }
+
+          @include maxRespond(1366) {
+            font-size: 36px;
+          }
+
+          @include maxRespond(1280) {
+            font-size: 32px;
+          }
+
+          @include maxRespond(1199) {
+            font-size: 28px;
+          }
+
+          @include maxRespond(991) {
+            font-size: 24px;
+          }
+
+          @include maxRespond(374) {
+            font-size: 20px;
+          }
+        }
+
+        & .des {
+          margin-top: 20px;
+          font-size: 16px;
+          line-height: 1.3;
+
+          // max-width: 600px;
+          @include maxRespond(1366) {
+            margin-top: 15px;
+            font-size: 14px;
+          }
+
+          @include maxRespond(1280) {
+            margin-top: 10px;
+          }
+
+          @include maxRespond(991) {
+            font-size: 12px;
+          }
+        }
+
+        & .quote {
+          font-size: 17px;
+          line-height: 1.3;
+          max-width: 500px;
+          margin-top: 20px;
+
+          @include maxRespond(1366) {
+            margin-top: 15px;
+            font-size: 16px;
+          }
+
+          @include maxRespond(1280) {
+            margin-top: 10px;
+            font-size: 14px;
+          }
+
+          @include maxRespond(991) {
+            font-size: 12px;
+          }
+
+          & strong {
+            font-weight: normal;
+            font-size: 19px;
+
+            @include maxRespond(1366) {
+              margin-top: 15px;
+              font-size: 17px;
+            }
+
+            @include maxRespond(1280) {
+              margin-top: 10px;
+              font-size: 16px;
+            }
+
+            @include maxRespond(991) {
+              font-size: 13px;
+            }
+          }
+        }
+
+        & .specialRev {
+          margin-top: 30px;
+
+          @include maxRespond(1280) {
+            margin-top: 20px;
+          }
+
+          @include maxRespond(767) {
+            margin-top: 15px;
+          }
+
+          & .spRevInner {
+            @include flexbox;
+            @include align-items(center);
+            font-size: 16px;
+            font-weight: 500;
+
+            @include maxRespond(1280) {
+              font-size: 14px;
+            }
+
+            @include maxRespond(767) {
+              font-size: 12px;
+            }
+
+            &:not(:last-of-type) {
+              margin-bottom: 15px;
+
+              @include maxRespond(767) {
+                margin-bottom: 10px;
+              }
+            }
+
+            & app-picture-tag {
+              max-width: 125px;
+              min-width: 125px;
+              margin-right: 15px;
+
+              @include maxRespond(767) {
+                max-width: 95px;
+                min-width: 95px;
+                margin-right: 10px;
+              }
+
+              & picture {
+                & img {
+                  max-width: 100%;
+                  max-height: 28px;
+
+                  @include maxRespond(767) {
+                    max-height: 18px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    & .right {
+      & app-picture-tag {
+        height: 100%;
+
+        & picture {
+          height: 100%;
+          text-align: center;
+
+          & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Banner Section End
+
+// By Review Section Start
+
+.byRevShop {
+  & .byRevShopInner {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 85px;
+    @include align-items(center);
+    max-width: 880px;
+    margin: 0 auto;
+
+    @include maxRespond(1440) {
+      gap: 75px;
+    }
+
+    @include maxRespond(1366) {
+      gap: 65px;
+    }
+
+    @include maxRespond(1280) {
+      gap: 55px;
+    }
+
+    @include maxRespond(991) {
+      gap: 40px;
+    }
+
+    @include maxRespond(767) {
+      grid-template-columns: 200px 1fr;
+      gap: 30px;
+    }
+
+    @include maxRespond(600) {
+      grid-template-columns: 150px 1fr;
+      gap: 20px;
+    }
+
+    @include maxRespond(545) {
+      grid-template-columns: 120px 1fr;
+      gap: 20px;
+    }
+
+    &:not(:last-of-type) {
+      margin-bottom: 65px;
+
+      @include maxRespond(1366) {
+        margin-bottom: 50px;
+      }
+
+      @include maxRespond(991) {
+        margin-bottom: 40px;
+      }
+
+      @include maxRespond(767) {
+        margin-bottom: 30px;
+      }
+
+      @include maxRespond(545) {
+        margin-bottom: 20px;
+      }
+    }
+
+    & .img {
+      & app-picture-tag {
+        & picture {
+          & img {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    & .cont {
+      & .icon {
+        margin-bottom: 20px;
+        opacity: 0.5;
+
+        @include maxRespond(767) {
+          margin-bottom: 10px;
+        }
+
+        & app-picture-tag {
+          & picture {
+            & img {
+              max-height: 22px;
+
+              @include maxRespond(767) {
+                max-height: 18px;
+              }
+
+              @include maxRespond(600) {
+                max-height: 15px;
+              }
+
+              @include maxRespond(545) {
+                max-height: 10px;
+              }
+            }
+          }
+        }
+      }
+
+      & .title {
+        font-size: 18px;
+        font-weight: 500;
+
+        @include maxRespond(1366) {
+          font-size: 16px;
+        }
+
+        @include maxRespond(767) {
+          font-size: 14px;
+        }
+
+        @include maxRespond(414) {
+          font-size: 12px;
+        }
+
+        & br {
+          @include maxRespond(767) {
+            display: none;
+          }
+        }
+      }
+
+      & .btnWrap {
+        margin-top: 35px;
+
+        @include maxRespond(767) {
+          margin-top: 25px;
+        }
+
+        @include maxRespond(545) {
+          margin-top: 10px;
+        }
+
+        & a {
+          display: inline-block;
+          padding: 10px 35px;
+          text-align: center;
+          background-color: $default-color-dark;
+          color: $default-color-white;
+          font-size: 15px;
+
+          @include maxRespond(600) {
+            font-size: 13px;
+          }
+
+          @include maxRespond(545) {
+            font-size: 12px;
+            padding: 8px 10px;
+          }
+
+          @include maxRespond(374) {
+            font-size: 10px;
+            padding: 6px 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// By Review Section End
+
+// Shop Mattresses Column Section Start
+
+.shopMattMain {
+  & .titleWrap {
+    position: relative;
+    margin-bottom: 40px;
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include maxRespond(1280) {
+      margin-bottom: 30px;
+    }
+
+    @include maxRespond(767) {
+      margin-bottom: 20px;
+    }
+
+    & .title {
+      font-size: 36px;
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.3;
+
+      @include maxRespond(1440) {
+        font-size: 32px;
+      }
+
+      @include maxRespond(1280) {
+        font-size: 28px;
+      }
+
+      @include maxRespond(991) {
+        font-size: 24px;
+      }
+
+      @include maxRespond(767) {
+        font-size: 22px;
+      }
+
+      @include maxRespond(545) {
+        font-size: 20px;
+      }
+
+      @include maxRespond(414) {
+        font-size: 18px;
+      }
+
+      & .orange {
+        color: $default-color-orangeLonghorn;
+      }
+    }
+
+    & .linkWrap {
+      position: absolute;
+      bottom: 5px;
+      right: 0;
+      font-weight: 500;
+
+      @include maxRespond(600) {
+        position: static;
+        width: 100%;
+        text-align: center;
+      }
+
+      & a {
+        color: $default-color-laylaBrand;
+      }
+    }
+
+    & .des {
+      margin-top: 10px;
+      font-size: 15px;
+      line-height: 1.3;
+
+      @include maxRespond(600) {
+        font-size: 14px;
+      }
+    }
+  }
+
+  & .shopMattInner {
+    display: grid;
+    gap: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 570px;
+    margin: 0 auto;
+
+    &:not(.col2) {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 950px;
+
+      @include maxRespond(600) {
+        grid-template-columns: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+    }
+
+    @include maxRespond(1280) {
+      gap: 40px;
+    }
+
+    @include maxRespond(991) {
+      gap: 30px;
+    }
+
+    @include maxRespond(767) {
+      gap: 20px;
+    }
+
+    @include maxRespond(600) {
+      grid-template-columns: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    & .shopMattCol {
+      & app-picture-tag {
+        & picture {
+          & img {
+            width: 100%;
+          }
+        }
+      }
+
+      & .shopMattColCont {
+        margin-top: 20px;
+
+        & .title {
+          font-size: 20px;
+          text-align: center;
+          font-weight: 500;
+          margin-bottom: 10px;
+
+          @include maxRespond(1440) {
+            font-size: 16px;
+          }
+
+          @include maxRespond(991) {
+            font-size: 14px;
+          }
+
+          & strong {
+            font-weight: 500;
+          }
+        }
+
+        & .subTitle {
+          font-size: 18px;
+          text-align: center;
+
+          @include maxRespond(1440) {
+            font-size: 16px;
+          }
+
+          @include maxRespond(1280) {
+            font-size: 14px;
+          }
+
+          @include maxRespond(991) {
+            font-size: 12px;
+          }
+        }
+
+        & .btnWrap {
+          margin-top: 15px;
+          text-align: center;
+
+          & a {
+            background-color: $default-color-dark;
+            color: $default-color-white;
+            display: inline-block;
+            width: 100%;
+            padding: 12px 10px;
+            font-size: 18px;
+            text-align: center;
+            max-width: 220px;
+
+            @include maxRespond(991) {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Shop Mattresses Column Section End
+
+// My Account Start
+.myAccount {
+  &__inner {
+    &--data {
+      @include flexbox;
+
+      &__left {
+        width: 300px;
+      }
+
+      &__right {
+        width: calc(100% - 350px);
+        margin-left: 50px;
+      }
+    }
+  }
+}
+
+// My Account End
+
+// More Mattress Start
+.moreMattSec {
+  &:not(.mattBases) {
+    background-color: $default-color-grayLightNew;
+  }
+
+  &.whiteBg {
+    background-color: $default-color-white;
+  }
+
+  &.lightGray {
+    background-color: $default-color-grayLightNew;
+  }
+
+  & .globalContainer3 {
+    max-width: 1350px;
+  }
+
+  &.mattBases {
+    & .moreMattInner {
+      & .moreMattCols {
+        & .moreMattCol {
+          & app-picture-tag {
+            text-align: center;
+            margin-bottom: 60px;
+
+            @include maxRespond(1440) {
+              margin-bottom: 50px;
+            }
+
+            @include maxRespond(1366) {
+              margin-bottom: 40px;
+            }
+
+            @include maxRespond(1280) {
+              margin-bottom: 30px;
+            }
+
+            @include maxRespond(991) {
+              margin-bottom: 20px;
+            }
+
+            & picture {
+              & img {
+                max-height: 100px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  & .moreMattInner {
+    & .title {
+      text-align: center;
+      margin-bottom: 70px;
+      font-size: 34px;
+
+      @include maxRespond(1440) {
+        font-size: 30px;
+        margin-bottom: 60px;
+      }
+
+      @include maxRespond(1280) {
+        font-size: 26px;
+        margin-bottom: 50px;
+      }
+
+      @include maxRespond(991) {
+        font-size: 22px;
+        margin-bottom: 35px;
+      }
+
+      @include maxRespond(767) {
+        margin-bottom: 25px;
+      }
+
+      & .bedSlTitle {
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 20px;
+
+        @include maxRespond(767) {
+          margin-bottom: 10px;
+        }
+      }
+
+      & .subTitle {
+        color: $default-color-laylaBrandDark;
+        font-size: 18px;
+        font-weight: 700;
+
+        @include maxRespond(767) {
+          font-size: 16px;
+        }
+      }
+    }
+
+    & .moreMattCols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 120px;
+
+      @include maxRespond(1440) {
+        gap: 80px;
+      }
+
+      @include maxRespond(1366) {
+        gap: 60px;
+      }
+
+      @include maxRespond(1280) {
+        gap: 40px;
+      }
+
+      @include maxRespond(991) {
+        gap: 30px;
+      }
+
+      @include maxRespond(820) {
+        grid-template-columns: 100%;
+        text-align: center;
+      }
+
+      @include maxRespond(545) {
+        gap: 60px;
+      }
+
+      @include maxRespond(414) {
+        gap: 40px;
+      }
+
+      &.moreMattCols2 {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 830px;
+        margin: auto;
+
+        @include maxRespond(820) {
+          grid-template-columns: 100%;
+        }
+      }
+
+      & app-more-product-box {
+        display: block;
+        max-width: 350px;
+        margin: auto;
+        width: 100%;
+
+        @include maxRespond(545) {
+          max-width: 300px;
+        }
+      }
+    }
+
+    & .btn {
+      margin-top: 80px;
+      text-align: center;
+
+      @include maxRespond(1440) {
+        margin-top: 60px;
+      }
+
+      @include maxRespond(1280) {
+        margin-top: 40px;
+      }
+
+      @include maxRespond(991) {
+        margin-top: 30px;
+      }
+
+      @include maxRespond(767) {
+        margin-top: 20px;
+      }
+
+      @include maxRespond(545) {
+        margin-top: 15px;
+      }
+
+      & a {
+        position: relative;
+        padding-right: 25px;
+        font-weight: 500;
+        font-size: 16px;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 5px;
+          right: 0;
+          width: 0;
+          height: 0;
+          border-top: 6px solid transparent;
+          border-bottom: 6px solid transparent;
+          border-left: 8px solid $default-color-dark;
+        }
+      }
+    }
+  }
+}
+
+// More Mattress End
+
+// Affirm Buy Pay Start
+.affirmBuyPaySec {
+  background-color: $default-color-grayLightNew;
+
+  &.mpaddTopNone {
+    @include maxRespond(767) {
+      padding-top: 0;
+    }
+  }
+
+  &.whiteBg {
+    background-color: $default-color-white;
+  }
+
+  & .affirmBuyPayInner {
+    @include align-items(center);
+    display: grid;
+    grid-template-columns: 1fr 560px;
+    gap: 100px;
+
+    @include maxRespond(1366) {
+      grid-template-columns: 1fr 530px;
+      gap: 80px;
+    }
+
+    @include maxRespond(1280) {
+      grid-template-columns: 1fr 500px;
+      gap: 60px;
+    }
+
+    @include maxRespond(991) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    @include maxRespond(767) {
+      grid-template-columns: 100%;
+      gap: 30px;
+    }
+
+    & .left {
+      @include maxRespond(767) {
+        text-align: center;
+      }
+
+      & .icon {
+        margin-bottom: 25px;
+
+        @include maxRespond(767) {
+          margin-bottom: 20px;
+        }
+
+        & app-picture-tag {
+          & picture {
+            & img {
+              max-width: 115px;
+
+              @include maxRespond(767) {
+                max-width: 90px;
+              }
+
+              @include maxRespond(545) {
+                max-width: 80px;
+              }
+            }
+          }
+        }
+      }
+
+      & .title {
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: 35px;
+        line-height: 1.2;
+
+        @include maxRespond(1366) {
+          font-size: 36px;
+          margin-bottom: 30px;
+        }
+
+        @include maxRespond(1280) {
+          font-size: 32px;
+          margin-bottom: 25px;
+        }
+
+        @include maxRespond(991) {
+          font-size: 28px;
+          margin-bottom: 20px;
+        }
+
+        @include maxRespond(767) {
+          font-size: 24px;
+          margin-bottom: 15px;
+        }
+
+        @include maxRespond(545) {
+          font-size: 20px;
+        }
+      }
+
+      & .subTitle {
+        font-size: 28px;
+        margin-bottom: 35px;
+        line-height: 1.2;
+
+        @include maxRespond(1366) {
+          font-size: 24px;
+          margin-bottom: 30px;
+        }
+
+        @include maxRespond(1280) {
+          font-size: 22px;
+          margin-bottom: 25px;
+        }
+
+        @include maxRespond(991) {
+          font-size: 20px;
+          margin-bottom: 20px;
+        }
+
+        @include maxRespond(767) {
+          margin-bottom: 15px;
+
+          & br {
+            display: none;
+          }
+        }
+
+        @include maxRespond(545) {
+          font-size: 18px;
+        }
+      }
+
+      & .des {
+        font-size: 18px;
+        margin-bottom: 35px;
+
+        @include maxRespond(1366) {
+          font-size: 16px;
+          margin-bottom: 30px;
+        }
+
+        @include maxRespond(991) {
+          font-size: 14px;
+          margin-bottom: 20px;
+        }
+
+        & .orange {
+          color: $default-color-laylaBrandDark;
+        }
+      }
+
+      & .note {
+        margin-bottom: 45px;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.2;
+
+        @include maxRespond(1366) {
+          font-size: 18px;
+          margin-bottom: 30px;
+        }
+
+        @include maxRespond(991) {
+          font-size: 16px;
+          margin-bottom: 20px;
+        }
+
+        @include maxRespond(767) {
+          font-size: 14px;
+        }
+      }
+
+      & .btnWrap {
+        & a {
+          border: $default-color-dark solid 1px;
+          color: $default-color-dark;
+          width: 100%;
+          max-width: 410px;
+          padding: 15px 15px;
+          display: block;
+          text-align: center;
+          font-size: 16px;
+          font-weight: 600;
+
+          &.dark {
+            background-color: $default-color-dark;
+            color: $default-color-white;
+          }
+
+          @include maxRespond(767) {
+            padding: 12px 15px;
+            font-size: 14px;
+            max-width: 300px;
+            margin: auto;
+          }
+
+          @include maxRespond(414) {
+            padding: 12px;
+            max-width: 250px;
+          }
+        }
+      }
+    }
+
+    & .right {
+      @include maxRespond(767) {
+        grid-row: 1/1;
+        margin: 0 -15px;
+      }
+
+      & app-picture-tag {
+        & picture {
+          overflow: hidden;
+
+          & img {
+            max-width: 100%;
+            transition: all ease-in-out 0.3s;
+
+            &:hover {
+              -webkit-transform: scale(1.05);
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Affirm Buy Pay End
+
+// Accident Protection Start
+
+.accProtect {
+  background-color: $default-color-darklightNew;
+
+  @include maxRespond(767) {
+    padding-top: 0;
+  }
+
+  &.lightDark {
+    background-color: $default-color-darklightNew2;
+  }
+
+  & .accProtInner {
+    display: grid;
+    grid-template-columns: 550px 1fr;
+    gap: 100px;
+    @include align-items(center);
+
+    @include maxRespond(1440) {
+      grid-template-columns: 500px 1fr;
+      gap: 80px;
+    }
+
+    @include maxRespond(1366) {
+      grid-template-columns: 450px 1fr;
+      gap: 60px;
+    }
+
+    @include maxRespond(1280) {
+      grid-template-columns: 400px 1fr;
+      gap: 40px;
+    }
+
+    @include maxRespond(991) {
+      grid-template-columns: 350px 1fr;
+      gap: 30px;
+    }
+
+    @include maxRespond(767) {
+      grid-template-columns: 100%;
+      gap: 20px;
+    }
+
+    & .left {
+      @include maxRespond(767) {
+        margin: 0 -15px;
+      }
+
+      & app-picture-tag {
+        & picture {
+          & img {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+
+    & .right {
+      width: 100%;
+      max-width: 590px;
+      margin-left: auto;
+      color: $default-color-white;
+
+      @include maxRespond(767) {
+        text-align: center;
+        margin: auto;
+      }
+
+      & .preTitle {
+        @include flexbox;
+        @include align-items(center);
+        font-size: 26px;
+        font-weight: 500;
+        margin-bottom: 15px;
+        line-height: 1.2;
+
+        @include maxRespond(1440) {
+          font-size: 24px;
+        }
+
+        @include maxRespond(1366) {
+          font-size: 22px;
+        }
+
+        @include maxRespond(1280) {
+          font-size: 20px;
+        }
+
+        @include maxRespond(991) {
+          font-size: 18px;
+        }
+
+        @include maxRespond(767) {
+          font-size: 16px;
+          @include justify-content(center);
+        }
+
+        & app-picture-tag {
+          margin-left: 20px;
+
+          @include maxRespond(991) {
+            margin-left: 10px;
+          }
+
+          & picture {
+            & img {
+              max-width: 24px;
+              width: 100%;
+              height: auto;
+
+              @include maxRespond(1280) {
+                max-width: 20px;
+              }
+
+              @include maxRespond(991) {
+                max-width: 18px;
+              }
+
+              @include maxRespond(767) {
+                max-width: 16px;
+              }
+            }
+          }
+        }
+      }
+
+      & .title {
+        font-size: 40px;
+        font-weight: 500;
+        line-height: 1.2;
+        margin-bottom: 20px;
+
+        @include maxRespond(1440) {
+          font-size: 36px;
+        }
+
+        @include maxRespond(1366) {
+          font-size: 32px;
+        }
+
+        @include maxRespond(1280) {
+          font-size: 28px;
+        }
+
+        @include maxRespond(991) {
+          font-size: 24px;
+        }
+      }
+
+      & .des {
+        margin-bottom: 25px;
+
+        @include maxRespond(767) {
+          margin-bottom: 45px;
+          font-size: 13px;
+        }
+
+        @include maxRespond(545) {
+          margin-bottom: 35px;
+          font-size: 12px;
+        }
+      }
+
+      & .btnWrap {
+
+        & a,
+        & button {
+          display: inline-block;
+          padding-right: 30px;
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 5px;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 8px solid $default-color-white;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Accident Protection End
+
+// Bed Accessories Start
+.bedSlAccessMain {
+  @include maxRespond(767) {
+    margin-top: 0;
+  }
+
+  & .titleWrap {
+    padding: 0 0 40px;
+
+    @include maxRespond(1440) {
+      padding: 0 0 30px;
+    }
+
+    @include maxRespond(991) {
+      padding: 0 0 40px;
+    }
+
+    @include maxRespond(767) {
+      padding: 40px 0 20px;
+      background-color: $default-color-whitelight8;
+    }
+
+    @include maxRespond(545) {
+      padding: 30px 0 15px;
+    }
+
+    & .bedSlTitle {
+      font-size: 34px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 20px;
+
+      @include maxRespond(1440) {
+        font-size: 30px;
+      }
+
+      @include maxRespond(1280) {
+        font-size: 26px;
+      }
+
+      @include maxRespond(991) {
+        font-size: 22px;
+      }
+
+      @include maxRespond(767) {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+    }
+
+    & .bedSlSubTitle {
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      color: $default-color-redDark;
+    }
+  }
+
+  & .bedSlAccessInner {
+    background-color: $default-color-grayLightNew;
+
+    &.lightColor {
+      background-color: $default-color-whitelight8;
+    }
+
+    & .bedSlAccessCols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 100px;
+
+      @include maxRespond(1440) {
+        gap: 40px;
+      }
+
+      @include maxRespond(1280) {
+        gap: 30px;
+      }
+
+      @include maxRespond(991) {
+        gap: 20px;
+      }
+
+      @include maxRespond(820) {
+        grid-template-columns: 100%;
+      }
+
+      @include maxRespond(767) {
+        gap: 50px;
+      }
+
+      & app-bedding-accessories {
+        display: block;
+        max-width: 350px;
+        margin: auto;
+        width: 100%;
+
+        @include maxRespond(545) {
+          max-width: 300px;
+        }
+      }
+    }
+  }
+}
+
+// Bed Accessories End
+
+// For Extole Start
+
+a.extole-controls--close svg {
+  color: $default-color-white !important;
+}
+
+a.extole-js-close-button.extole-controls svg {
+  color: $default-color-white !important;
+}
+
+.extole-overlay-cta-wrapper .extole-overlay-cta-content:hover .extole-maximized-section:not(.extole-maximized-section--full-width)+.extole-controls--close .extole-controls__svg {
+  color: #cccccc !important;
+}
+
+.extole-widget-view .extole-widget-wrapper .extole-controls--close .extole-controls__svg {
+  color: $default-color-red !important;
+}
+
+#extole_zone_overlay section .extole-submit-button__default,
+#extole_zone_overlay section.extole-js-open-widget-or-redirect.extole-minimized-section,
+.yotpo .primary-color-btn,
+.yotpo input[type="button"].primary-color-btn {
+  background-color: $default-color-dark !important;
+}
+
+#extole-7031596180841109227 .extole-overlay-cta-wrapper .extole-overlay-cta-content:hover .extole-maximized-section:not(.extole-maximized-section--full-width)+.extole-controls--close .extole-controls__svg {
+  color: #cccccc !important;
+}
+
+@include maxRespond(480) {
+  #extole_zone_overlay div .extole-overlay-cta-wrapper {
+    max-width: 75%;
+  }
+}
+
+// For Extole End
+
+.checkout iframe#launcher,
+.agentCheckout iframe#launcher {
+  @include maxRespond(767) {
+    top: 0;
+    margin-right: 15px !important;
+  }
+}
+
+.showdisablebtn {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.bfnote {
+  font-size: 14px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.adsbygoogle {
+  display: inline !important;
+}

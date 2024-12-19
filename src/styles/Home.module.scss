@@ -1,0 +1,1162 @@
+@use "/src/styles/theme-scss/base.scss" as *;
+
+%headTitle {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(space-between);
+    margin-bottom: 20px;
+
+    & .title {
+        @include flexbox;
+        @include align-items(center);
+        font-size: 32px;
+        font-weight: 600;
+        margin: 0;
+        color: $default-color-dark;
+
+        & .tag {
+            display: inline-block;
+            background-color: $default-color-black;
+            padding: 5px 15px;
+            font-size: 12px;
+            color: $default-color-white;
+            margin-left: 10px;
+            font-weight: 500;
+        }
+    }
+
+    & .laylaButtonLink {
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+
+        &::after {
+            --btnDashW: 30px;
+        }
+    }
+}
+
+.homeMain {
+    & .homeBanner {
+        padding: 20px 0 60px;
+        position: relative;
+
+        & .homeBannerShape {
+            overflow: hidden;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            z-index: 0;
+            line-height: 0;
+            direction: ltr;
+            transform: rotate(180deg);
+            margin-bottom: -1px;
+
+            & svg {
+                display: block;
+                width: calc(100% + 1.3px);
+                position: relative;
+                left: 50%;
+                height: 230px;
+                transform: translateX(-50%) rotateY(180deg);
+                fill: $default-color-white;
+            }
+        }
+
+        & .homeBannerWrap {
+            position: relative;
+            max-width: 1800px;
+            margin: auto;
+            width: 100%;
+            padding: 0 15px;
+
+            & .homeBannerInner {
+                @include flexbox;
+
+                & .col {
+                    padding-left: 20px;
+                    width: calc(23% + 10px);
+                    position: relative;
+
+                    & app-picture-tag {
+                        height: 100%;
+
+                        & ::ng-deep picture {
+                            display: block;
+                            height: 100%;
+
+                            & img {
+                                width: 100%;
+                                max-height: 640px;
+                            }
+                        }
+                    }
+
+                    & .overlaytxtWrap {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+
+                        // --color: #fff;
+                        // --btnLinkColor: #fff;
+                        &.end {
+                            @include flexbox;
+                            @include flex-direction(column);
+                            @include align-items(flex-end);
+                        }
+
+                        & .overlaytxt {
+                            & .title {
+                                @include inline-flex;
+                                @include align-items(center);
+                                font-size: var(--font-size, 38px);
+                                color: var(--color, $default-color-dark);
+                                font-weight: 500;
+                                line-height: 1.3;
+                                margin-bottom: 10px;
+                            }
+
+                            & .accTitle {
+                                font-size: 16px;
+                                margin-bottom: 15px;
+                                line-height: 1.3;
+
+                                & ::ng-deep span {
+                                    display: block;
+
+                                    &.off {
+                                        font-weight: 600;
+                                        font-size: 24px;
+                                    }
+
+                                    &.name {
+                                        font-size: 20px;
+                                        line-height: 1.2;
+                                        font-weight: 500;
+                                    }
+                                }
+                            }
+
+                            & a {
+                                text-transform: uppercase;
+                                font-weight: 600;
+                                letter-spacing: 1px;
+                                font-size: 18px;
+                                --btnDashW: 60px;
+
+                                @include maxRespond(1440) {
+                                    font-size: 16px;
+                                    --btnDashW: 50px;
+                                }
+
+                                @include maxRespond(1280) {
+                                    font-size: 14px;
+                                    --btnDashW: 40px;
+                                }
+                            }
+                        }
+                    }
+
+                    & .colInner {
+                        height: 100%;
+                        position: relative;
+                    }
+
+                    &.bannerSlide {
+                        width: calc(54% - 20px);
+
+                        & ::ng-deep picture {
+                            height: 100%;
+
+                            & img {
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+
+                        & .overlaytxtWrap {
+                            padding: 50px 30px;
+                            --font-size: 24px;
+
+                            @include maxRespond(1440) {
+                                padding: 40px 20px;
+                                --font-size: 22px;
+                            }
+
+                            @include maxRespond(1366) {
+                                padding: 30px 15px;
+                                --font-size: 20px;
+                            }
+
+                            @include maxRespond(1280) {
+                                padding: 20px 10px;
+                                --font-size: 18px;
+                            }
+                        }
+                    }
+
+                    &.col2 {
+                        & ::ng-deep picture {
+                            height: 100%;
+
+                            & img {
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+
+                        & .overlaytxtWrap {
+                            padding: 50px 30px;
+                            --font-size: 24px;
+
+                            @include maxRespond(1440) {
+                                padding: 40px 20px;
+                                --font-size: 22px;
+                            }
+
+                            @include maxRespond(1366) {
+                                padding: 30px 15px;
+                                --font-size: 20px;
+                            }
+
+                            @include maxRespond(1280) {
+                                padding: 20px 10px;
+                                --font-size: 18px;
+                            }
+                        }
+                    }
+
+                    &.col3 {
+                        padding-left: 0;
+
+                        & .colInner {
+                            @include flexbox;
+                            @include flex-direction(column);
+                            @include justify-content(space-between);
+
+                            & .col3InnerCol {
+                                @include flex(1);
+                                position: relative;
+
+                                &:first-child {
+                                    margin-bottom: 20px;
+                                }
+
+                                & ::ng-deep picture {
+                                    & img {
+                                        height: 100%;
+                                        object-fit: cover;
+                                    }
+                                }
+
+                                & .overlaytxtWrap {
+                                    --font-size: 24px;
+                                    padding: 20px 10%;
+
+                                    @include maxRespond(1366) {
+                                        padding: 15px 8%;
+                                    }
+
+                                    @include maxRespond(1280) {
+                                        padding: 10px 5%;
+                                    }
+
+                                    & .overlaytxt {
+                                        & .btn {
+                                            & .laylaButtonLink {
+                                                --btnDashW: 50px;
+
+                                                @include maxRespond(1366) {
+                                                    --btnDashW: 40px;
+                                                }
+
+                                                @include maxRespond(1280) {
+                                                    --btnDashW: 30px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                &.saleCol {
+                                    @include flexbox;
+                                    @include flex-direction(column);
+                                    @include justify-content(center);
+                                    background-color: $default-color-darklight;
+                                    color: $default-color-white;
+                                    padding: 8% 10%;
+                                    position: relative;
+
+                                    @include maxRespond(1366) {
+                                        padding: 6% 8%;
+                                    }
+
+                                    @include maxRespond(1280) {
+                                        padding: 6% 5%;
+                                    }
+
+                                    & .title {
+                                        margin: 0 0 20px;
+                                        padding-bottom: 20px;
+                                        border-bottom: $default-color-white solid 1px;
+                                        font-size: 24px;
+                                        line-height: 1.1;
+                                        font-weight: 300;
+
+                                        @include maxRespond(1440) {
+                                            margin: 0 0 15px;
+                                            padding-bottom: 15px;
+                                            font-size: 22px;
+                                        }
+
+                                        @include maxRespond(1366) {
+                                            margin: 0 0 10px;
+                                            padding-bottom: 10px;
+                                            font-size: 20px;
+                                        }
+                                    }
+
+                                    & .offer {
+                                        &:not(:last-of-type) {
+                                            margin-bottom: 15px;
+
+                                            @include maxRespond(1366) {
+                                                margin-bottom: 10px;
+                                            }
+                                        }
+
+                                        font-size: 22px;
+                                        font-weight: 500;
+
+                                        @include maxRespond(1440) {
+                                            font-size: 20px;
+                                        }
+
+                                        @include maxRespond(1366) {
+                                            font-size: 18px;
+                                        }
+
+                                        & ::ng-deep span {
+                                            display: block;
+                                            font-size: 18px;
+                                            font-weight: normal;
+
+                                            @include maxRespond(1440) {
+                                                font-size: 16px;
+                                            }
+
+                                            @include maxRespond(1366) {
+                                                font-size: 14px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    & .featuresInfo {
+        background-color: $default-color-white;
+        padding: 10px 0 30px;
+
+        & .fInfoInner {
+            @include flexbox;
+            @include justify-content(center);
+
+            & .fInfoCol {
+                @include flexbox;
+                @include align-items(flex-end);
+                padding: 0 20px;
+                font-size: 12px;
+                font-weight: 500;
+                color: $default-color-black;
+
+                & ::ng-deep picture {
+                    margin-right: 10px;
+
+                    & img {
+                        max-width: 33px;
+                        max-height: 33px;
+                        position: relative;
+                        bottom: -5px;
+                    }
+                }
+
+                &:first-child {
+                    & ::ng-deep picture {
+                        & img {
+                            max-width: 38px;
+                            max-height: 45px;
+                        }
+                    }
+                }
+
+                &:nth-child(2) {
+                    & ::ng-deep picture {
+                        & img {
+                            max-width: 55px;
+                            max-height: 33px;
+                            bottom: -2px;
+                        }
+                    }
+                }
+
+                &:nth-child(3) {
+                    & ::ng-deep picture {
+                        & img {
+                            max-width: 40px;
+                            max-height: 40px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    & .flipSec {
+        background-color: $default-color-whitelight8;
+        padding: 100px 0;
+
+        @include maxRespond(1660) {
+            padding: 90px 0;
+        }
+
+        @include maxRespond(1440) {
+            padding: 70px 0;
+        }
+
+        @include maxRespond(1366) {
+            padding: 50px 0;
+        }
+
+        @include maxRespond(1280) {
+            padding: 40px 0;
+        }
+
+        @include maxRespond(991) {
+            padding: 30px 0;
+        }
+
+        @include maxRespond(767) {
+            padding: 20px 0;
+        }
+
+        & .flipInner {
+            @include flexbox;
+            @include align-items(center);
+            max-width: 1800px;
+            margin: auto;
+            width: 100%;
+            padding: 0 15px;
+
+            @include maxRespond(767) {
+                @include flex-wrap(wrap);
+            }
+
+            & .flipLeft {
+                width: 38%;
+                max-width: 512px;
+                margin: 0 auto;
+                padding: 0 15px;
+
+                @include maxRespond(767) {
+                    width: 100%;
+                    padding: 0;
+                    margin-bottom: 20px;
+                }
+
+                & .subTitle {
+                    font-size: 16px;
+                    margin-bottom: 15px;
+
+                    @include maxRespond(1366) {
+                        font-size: 14px;
+                    }
+
+                    @include maxRespond(991) {
+                        margin-bottom: 10px;
+                        font-size: 12px;
+                    }
+                }
+
+                & .title {
+                    font-size: 49px;
+                    font-weight: 700;
+                    line-height: 1.2;
+
+                    @include maxRespond(1660) {
+                        font-size: 44px;
+                    }
+
+                    @include maxRespond(1440) {
+                        font-size: 40px;
+                    }
+
+                    @include maxRespond(1366) {
+                        font-size: 38px;
+                    }
+
+                    @include maxRespond(1280) {
+                        font-size: 34px;
+                    }
+
+                    @include maxRespond(991) {
+                        font-size: 32px;
+                    }
+
+                    @include maxRespond(820) {
+                        font-size: 28px;
+                    }
+
+                    @include maxRespond(767) {
+                        font-size: 26px;
+                    }
+
+                    @include maxRespond(545) {
+                        font-size: 22px;
+                    }
+                }
+
+                & .flipLeftImg {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 15px;
+                    margin-top: 55px;
+
+                    @include maxRespond(991) {
+                        margin-top: 40px;
+                    }
+
+                    @include maxRespond(820) {
+                        margin-top: 30px;
+                    }
+
+                    @include maxRespond(767) {
+                        margin-top: 20px;
+                    }
+
+                    & .flipLeftImgCol {
+                        cursor: pointer;
+                        user-select: none;
+
+                        &.active {
+                            border: $default-color-orangeLonghorn solid 1px;
+                        }
+
+                        & app-picture-tag {
+                            & ::ng-deep picture {
+                                @include flexbox;
+
+                                & img {
+                                    max-width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            & .flipRight {
+                @include flexbox;
+                @include justify-content(center);
+                width: 62%;
+
+                @include maxRespond(767) {
+                    width: 100%;
+                }
+
+                & .flipRightInnerWrap {
+                    width: 100%;
+                    max-width: 850px;
+
+                    & app-recommendedby {
+                        max-width: 650px;
+                        display: block;
+                        margin-left: auto;
+
+                        & ::ng-deep .recomdBy {
+                            padding-top: 0;
+                        }
+                    }
+
+                    & .flipRightInner {
+                        @include flexbox;
+                        @include align-items(center);
+                        width: 100%;
+                        padding-top: 40px;
+
+                        @include maxRespond(1440) {
+                            @include flex-wrap(wrap);
+                            padding-top: 30px;
+                        }
+
+                        & .flipRightCont {
+                            max-width: 230px;
+                            width: 100%;
+
+                            @include maxRespond(1440) {
+                                margin: 0 auto;
+                            }
+
+                            & .title {
+                                @include flexbox;
+                                @include align-items(center);
+                                font-size: 24px;
+                                font-weight: 600;
+                                color: $default-color-darklight2;
+
+                                & ::ng-deep span {
+                                    color: $default-color-orangeNew;
+                                    display: inline-block;
+                                    margin-left: 10px;
+                                }
+                            }
+
+                            & .des {
+                                margin-top: 15px;
+                                line-height: 1.2;
+                                font-weight: 500;
+                                font-size: 16px;
+                            }
+
+                            & .btnWrap {
+                                margin-top: 20px;
+
+                                & a {
+                                    display: inline-block;
+                                    background-color: $default-color-dark;
+                                    color: $default-color-white;
+                                    border-radius: 8px;
+                                    padding: 8px 15px;
+                                    width: 100%;
+                                    font-size: 16px;
+                                    font-weight: 300;
+                                    text-align: center;
+                                }
+                            }
+
+                            & .icon {
+                                margin-top: 20px;
+                            }
+                        }
+
+                        & .flipRightLottie {
+                            width: 100%;
+                            max-width: 480px;
+                            margin: 0 auto;
+
+                            & app-picture-tag {
+                                & ::ng-deep picture {
+                                    @include flexbox;
+
+                                    & img {
+                                        max-width: 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    & .whoTalk {
+        background-color: $default-color-white;
+        padding: 100px 0;
+
+        & .whoTalkInner {
+            @include flexbox;
+            @include align-items(center);
+            max-width: 1800px;
+            margin: auto;
+            width: 100%;
+            padding: 0 15px;
+
+            & .title {
+                font-size: 58px;
+                font-weight: 700;
+                line-height: 1.2;
+                width: 44%;
+                padding: 0 50px;
+            }
+
+            & .img {
+                & app-picture-tag {
+                    & ::ng-deep picture {
+                        @include flexbox;
+
+                        & img {
+                            max-width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    & .lfSec {
+        background-color: $default-color-white;
+
+        &__inner {
+            @include flexbox;
+
+            &--left {
+                width: 50%;
+
+                & app-picture-tag {
+                    & ::ng-deep picture {
+                        @include flexbox;
+
+                        & img {
+                            width: 100%;
+                            max-width: 100%;
+                        }
+                    }
+                }
+            }
+
+            &--right {
+                @include flexbox;
+                width: 50%;
+                padding: 20px;
+
+                &__inner {
+                    max-width: 750px;
+                    margin: auto;
+                    width: 100%;
+
+                    & h3 {
+                        @include flexbox;
+                        @include align-items(center);
+                        font-size: 28px;
+
+                        & .colororg {
+                            display: inline-block;
+                            color: $default-color-orangeDark;
+                            margin-left: 5px;
+                        }
+
+                        & .off {
+                            display: inline-block;
+                            background-color: $default-color-orangeDark;
+                            padding: 5px 10px;
+                            font-size: 10px;
+                            color: $default-color-white;
+                            margin-left: 10px;
+                            font-weight: 300;
+                        }
+                    }
+
+                    & h4 {
+                        font-size: 34px;
+                        font-weight: 300;
+                        margin-top: 15px;
+                    }
+
+                    & .des {
+                        font-size: 16px;
+                        font-weight: 300;
+                        margin: 10px 0 0;
+                        line-height: 1.2;
+                    }
+
+                    & .btnImg {
+                        @include flexbox;
+                        @include align-items(flex-start);
+                        margin-top: 40px;
+
+                        & a {
+                            display: inline-block;
+                            font-size: 14px;
+                            font-weight: 500;
+                            background-color: $default-color-dark;
+                            color: $default-color-white;
+                            padding: 12px 30px;
+                            width: 100%;
+                            max-width: 280px;
+                            text-align: center;
+                        }
+
+                        & app-picture-tag {
+                            margin-left: 25px;
+
+                            & ::ng-deep picture {
+                                @include flexbox;
+
+                                & img {
+                                    max-width: 320px;
+                                    height: auto;
+                                    position: relative;
+                                    margin-bottom: -100px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    & .productsWrap {
+        & .headTitle {
+            @extend %headTitle;
+        }
+
+        & .productSlides {
+            position: relative;
+
+            & ::ng-deep .owl-nav {
+
+                & .owl-prev,
+                & .owl-next {
+                    position: absolute;
+                    top: 50%;
+                    width: 75px;
+                    height: 42px;
+                    z-index: 1;
+                    margin: -70px 0 0;
+                    background-image: url("/assets/images/svg/leftArr.svg");
+                    background-repeat: no-repeat;
+                    background-size: 20px;
+                    background-position: center;
+                    border-radius: 20px;
+                    border: $default-color-gray solid 1px;
+                    background-color: transparent;
+
+                    &:hover {
+                        background-color: $default-color-white;
+                    }
+                }
+
+                & .owl-prev {
+                    left: -32px;
+                    transform: rotate(180deg);
+                }
+
+                & .owl-next {
+                    right: -32px;
+                }
+            }
+        }
+    }
+
+    & .sliderBoxed {
+        --spaceTRBL: 50px;
+        --item-height: 680px;
+        --transition-duration: 300ms;
+        --vertical-y: 60px;
+
+        & .slideBoxWrap {
+            --stretch: calc(((var(--site-width) - var(--containerWidth)) / 2));
+            --offset-m-right: calc(-1 * var(--stretch, 0px));
+            width: auto;
+            max-width: calc(var(--containerWidth) + var(--stretch, 0px) - 0);
+            margin-left: var(--offset-m-left, 0px);
+            margin-right: var(--offset-m-right, 0px);
+
+            & ::ng-deep .owl-dots {
+                @include flexbox;
+                max-width: 1100px;
+                width: 100%;
+                margin-top: 30px;
+                position: relative;
+                z-index: 1;
+
+                & .owl-dot {
+                    @include flex(1);
+                    padding: 5px 0;
+
+                    &.active {
+                        & span {
+                            background-color: $default-color-dark;
+                        }
+                    }
+
+                    & span {
+                        height: 1px;
+                        margin: 0;
+                        width: 100%;
+                    }
+                }
+            }
+
+            & ::ng-deep .owl-nav {
+                max-width: var(--containerWidth);
+                text-align: right;
+                margin-top: 0;
+                position: absolute;
+                bottom: -4px;
+                width: 100%;
+
+                & .owl-prev,
+                & .owl-next {
+                    border: none;
+                    padding: 10px 25px;
+                    z-index: 1;
+                    margin: 0;
+                    background-image: url("/assets/images/svg/leftArr.svg");
+                    background-repeat: no-repeat;
+                    background-size: 30px;
+                    background-position: center;
+                    background-color: transparent;
+                }
+
+                & .owl-prev {
+                    margin-right: 50px;
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+
+    & .homeBoxes {
+        & .homeBoxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1650px;
+            margin: auto;
+            padding: 0 15px;
+
+            & .homeBox {
+                position: relative;
+                border-radius: var(--globalRadius);
+                overflow: hidden;
+
+                &:hover {
+                    & .bgOverlay {
+                        opacity: 1;
+                    }
+                }
+
+                & .bgOverlay {
+                    transition: 0.3s var(--easeoutcubic, ease-in-out);
+                    transition-property: opacity, -webkit-transform;
+                    opacity: 0;
+                }
+
+                & ::ng-deep picture {
+                    @include flexbox;
+
+                    & img {
+                        width: 100%;
+                    }
+                }
+
+                & .boxContOverlay {
+                    @include flexbox;
+                    @include flex-direction(column);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    padding: 50px;
+                    height: 100%;
+                    z-index: 9;
+
+                    & .subTxt {
+                        color: $default-color-whitelight2;
+                        margin-bottom: 15px;
+                    }
+
+                    & .title {
+                        color: $default-color-white;
+                        font-size: 40px;
+                        font-weight: 600;
+                        line-height: 1.1;
+
+                        & sup {
+                            font-size: 16px;
+                        }
+                    }
+
+                    & .btn {
+                        margin-top: auto;
+                        text-align: right;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        font-size: 16px;
+                        --btnDashW: 30px;
+                        --btnLinkColor: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    & .affirmMain {
+        & ::ng-deep .affirm__innerWrap {
+            background-color: $default-color-orangeDark;
+        }
+    }
+
+    & .fullImg {
+        & .fullImgInner {
+            max-width: var(--containerWidth2);
+            margin: auto;
+            padding: 0 15px;
+
+            & .fullImgBox {
+                position: relative;
+                border-radius: var(--globalRadius);
+                overflow: hidden;
+
+                & ::ng-deep picture {
+                    @include flexbox;
+
+                    & img {
+                        width: 100%;
+                    }
+                }
+
+                & app-video-tag {
+                    & ::ng-deep .vdo-wrp {
+                        @include flexbox;
+
+                        & video {
+                            border-radius: var(--globalRadius);
+                            height: auto;
+                            max-width: 100%;
+                        }
+                    }
+                }
+
+                & .boxContOverlay {
+                    @include flexbox;
+                    @include flex-direction(column);
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    padding: 50px;
+
+                    & .title {
+                        color: $default-color-white;
+                        font-size: 50px;
+                        font-weight: 500;
+                        line-height: 1.3;
+                        max-width: 1000px;
+                        margin: 0 auto 30px;
+                        text-align: center;
+                    }
+
+                    & .btn {
+                        margin-top: auto;
+                        text-align: center;
+                        text-transform: uppercase;
+                        font-weight: 500;
+                        font-size: 16px;
+                        --btnDashW: 30px;
+                        --btnLinkColor: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    & .homeBlog {
+        & .headTitle {
+            @extend %headTitle;
+        }
+
+        & .homeBlogInner {
+            @include flexbox;
+
+            & .homeBlogCol {
+                padding-left: 20px;
+                width: calc(25% + 15px);
+                position: relative;
+                overflow: hidden;
+
+                & app-picture-tag {
+                    height: 100%;
+
+                    & ::ng-deep picture {
+                        display: block;
+                        height: 100%;
+
+                        & img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+
+                    & .overlaytxt {
+                        --font-size: 24px;
+                    }
+                }
+
+                & .blogContOverlay {
+                    padding: var(--padding, 0);
+                    width: 100%;
+                    margin-top: 20px;
+
+                    & .title {
+                        font-size: var(--font-size, 18px);
+                        font-weight: 600;
+                        margin-bottom: 15px;
+                        line-height: 1.2;
+
+                        & a {
+                            display: block;
+                            color: var(--color, $default-color-black);
+
+                            &:hover {
+                                opacity: 0.8;
+                            }
+                        }
+                    }
+
+                    & .btn {
+                        & a {
+                            font-size: 13px;
+                            font-weight: 500;
+                            color: var(--color, $default-color-dark);
+                        }
+                    }
+                }
+
+                & .colInner {
+                    @include flexbox;
+                    @include flex-direction(column);
+                    height: 100%;
+                }
+
+                &.homeBlogCol1 {
+                    width: calc(50%);
+                    padding-left: 0;
+                    border-radius: var(--globalRadius);
+
+                    & ::ng-deep picture {
+                        & img {
+                            min-height: 580px;
+                        }
+                    }
+
+                    & .blogContOverlay {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        --font-size: 30px;
+                        --color: #fff;
+                        --padding: 8%;
+
+                        & .btn {
+                            & a {
+                                color: var(--color, $default-color-dark);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
