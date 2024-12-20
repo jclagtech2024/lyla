@@ -1,5 +1,4 @@
 
-
 export default {
     "sale_offer_data": {
         "saleTitle": "LABOR DAY <br/>MATTRESS SALE",

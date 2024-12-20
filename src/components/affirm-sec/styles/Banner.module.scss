@@ -1,0 +1,27 @@
+.affirmBanner {
+    background-color: #d6491a;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    position: relative;
+}
+
+.affirmBanner strong {
+    font-size: 50px;
+    text-transform: lowercase;
+    margin-right: 5px;
+}
+
+.affirmBanner .learnMore {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 10px;
+    transition: color 0.3s ease;
+}
+
+.affirmBanner .learnMore:hover {
+    color: #ffc107;
+}

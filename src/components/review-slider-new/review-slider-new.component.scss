@@ -1,0 +1,197 @@
+@use "../../../assets/styles/theme-scss/base.scss" as *;
+
+owl-carousel-o,
+owl-carousel-o picture {
+    display: block;
+}
+
+.review-slider {
+    text-align: center;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    &__items {
+        & .star {
+            color: $default-color-yeldark;
+            margin-bottom: 10px;
+            font-size: 28px;
+            display: block;
+            line-height: 1;
+
+            @include maxRespond(1366) {
+                font-size: 20px;
+            }
+
+            @include maxRespond(1280) {
+                font-size: 18px;
+            }
+
+            @include maxRespond(767) {
+                font-size: 16px;
+            }
+        }
+
+        &--title {
+            font-size: 36px;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            color: $default-color-darklight;
+            font-weight: 400;
+
+            @include maxRespond(1366) {
+                font-size: 24px;
+            }
+
+            @include maxRespond(1280) {
+                font-size: 22px;
+            }
+
+            @include maxRespond(767) {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            @include maxRespond(414) {
+                font-size: 18px;
+            }
+        }
+
+        &--usertitle {
+            & label {
+                @include flexbox;
+                justify-content: center;
+                align-items: center;
+                font-size: 12px;
+                margin-bottom: 15px;
+                font-weight: 500;
+                color: $default-color-darklight;
+
+                & ::ng-deep img {
+                    max-height: 35px;
+                    max-width: 35px;
+
+                    @include maxRespond(767) {
+                        max-height: 30px;
+                        max-width: 30px;
+                    }
+                }
+
+                & p {
+                    margin-left: 15px;
+                    margin-bottom: 0;
+
+                    @include maxRespond(767) {
+                        margin-left: 10px;
+                    }
+
+                    & span {
+                        font-weight: 300;
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+
+        &--des {
+            font-size: 20px;
+            max-width: 750px;
+            font-weight: 300;
+            color: $default-color-darklight;
+            margin: auto;
+
+            @include maxRespond(1440) {
+                font-size: 23px;
+            }
+
+            @include maxRespond(1366) {
+                font-size: 20px;
+            }
+
+            @include maxRespond(1280) {
+                font-size: 18px;
+            }
+
+            @include maxRespond(991) {
+                max-width: 600px;
+                font-size: 16px;
+            }
+
+            @include maxRespond(545) {
+                max-width: calc(100% - 20px);
+                font-size: 14px;
+            }
+        }
+    }
+
+    & .owlNavWrap {
+        & .owlNav {
+            @include flexbox;
+            @include justify-content(center);
+            @include align-items(center);
+            position: absolute;
+            transform: translate(0, -50%);
+            top: 50%;
+            font-size: 42px;
+            font-weight: 300;
+            cursor: pointer;
+            z-index: 1;
+            color: $default-color-dark;
+
+            @include maxRespond(767) {
+                top: 70%;
+                font-size: 34px;
+            }
+
+            & ::ng-deep svg {
+                width: 10px;
+
+                @include maxRespond(767) {
+                    width: 8px;
+                }
+            }
+
+            &.left {
+                left: 20px;
+
+                @include maxRespond(767) {
+                    left: -8px;
+                }
+            }
+
+            &.right {
+                left: auto;
+                right: 20px;
+
+                @include maxRespond(767) {
+                    right: -8px;
+                }
+            }
+        }
+    }
+
+    & ::ng-deep .owl-dots {
+        @include flexbox;
+        @include justify-content(center);
+        margin-top: 0;
+
+        & .owl-dot {
+            margin: 0 5px 0 !important;
+            width: 12px !important;
+            height: 12px !important;
+            border-radius: 50%;
+            opacity: 1;
+            font-size: 0;
+            background-color: #535557;
+
+            @include maxRespond(767) {
+                width: 10px !important;
+                height: 10px !important;
+            }
+
+            &.active {
+                background-color: $default-color-orangeNew;
+            }
+        }
+    }
+}
